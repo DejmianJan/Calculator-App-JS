@@ -18,7 +18,7 @@ background: linear-gradient(180deg, rgba(105,105,105,1) 2%, rgba(105,105,105,0.6
 }
 .display{
     width: 100%;
-    min-height: 200px;
+    min-height: 220px;
     max-height: min-content;
     background-color: black;
     color: white;
@@ -30,11 +30,8 @@ background: linear-gradient(180deg, rgba(105,105,105,1) 2%, rgba(105,105,105,0.6
     font-size: 25px;
     font-weight: bold;
 }
-.previousNumber{
-    padding-right: 10px;
-}
-.currentNumber{
-    padding-right: 10px;
+.result{
+    padding: 10px 20px 10px 0px;
 }
 .btns{
     width: 100%;
@@ -73,6 +70,7 @@ background: linear-gradient(180deg, rgba(105,105,105,1) 2%, rgba(105,105,105,0.6
     background-color: #F08000;
     
 }
+
 .operator:hover{
     background-color: #F08050;
 }
