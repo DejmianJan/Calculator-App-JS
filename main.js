@@ -7,6 +7,12 @@ const equalsButton = document.querySelector('.equals');
 const clearButton = document.querySelector('.clear');
 
 
+const calculatorHistory = document.querySelector('.calculator__history')
+const calculatorHistoryItem = document.querySelector('.calculator__history ul')
+const historyBtn = document.querySelector('.history__btn');
+const arrowUp = document.querySelector('.arrow__up');
+const arrowDown = document.querySelector('.arrow__down');
+
 let result = '';
 
 // Functions
@@ -27,7 +33,7 @@ function operate(){
     if(mathSign.innerHTML !== ''){
          showResult(); 
     }
-    debugger
+    
     previousNumber.innerHTML = currentNumber.innerHTML;
     mathSign.innerHTML = this.textContent;
     currentNumber.innerHTML = '';
@@ -58,10 +64,11 @@ function showResult(){
             break;
 
     }
-
+    addToHistory();
     currentNumber.innerHTML = result;
     previousNumber.innerHTML = '';
     mathSign.innerHTML = '';
+    
 }
 
 
@@ -70,7 +77,30 @@ function clearScreen(){
     previousNumber.innerHTML = '';
     mathSign.innerHTML = '';
 }
+
+function showHistory(){
+    
+    arrowUp.classList.toggle('active');
+    arrowDown.classList.toggle('active');
+    calculatorHistory.classList.toggle('active');
+}
+
+function addToHistory(){
+    const newHistoryItem = document.createElement('li');
+    newHistoryItem.innerHTML = `
+    ${previousNumber.innerHTML}
+    ${mathSign.innerHTML}
+    ${currentNumber.innerHTML} =
+    ${result}`
+    
+    calculatorHistoryItem.appendChild(newHistoryItem);
+}
 // Listeners
+
+historyBtn.addEventListener('click', showHistory);
+
+
+
 equalsButton.addEventListener('click', showResult);
 clearButton.addEventListener('click', clearScreen)
 numbersButtons.forEach((button) => {
@@ -78,4 +108,6 @@ numbersButtons.forEach((button) => {
 });
 
 mathSignButton.forEach((button) => button.addEventListener('click', operate));
+
+
 
